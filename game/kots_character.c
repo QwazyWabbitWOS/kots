@@ -19,40 +19,41 @@ static int CheckArmor (edict_t *ent, vec3_t point, vec3_t normal, int damage, in
 
 int Kots_CharacterGetNextLevelExp(int level)
 {
+	//dividing down the amount of exp needed to gain levels
 	switch (level)
 	{
 	case 0:
-		return 500;
+		return 500 / KOTS_EXP_DIVIDE;
 	case 1:
-		return 1000;
+		return 1000 / KOTS_EXP_DIVIDE;
 	case 2:
-		return 2000;
+		return 2000 / KOTS_EXP_DIVIDE;
 	case 3:
-		return 4000;
+		return 4000 / KOTS_EXP_DIVIDE;
 	case 4:
-		return 8000;
+		return 8000 / KOTS_EXP_DIVIDE;
 	case 5:
-		return 16000;
+		return 16000 / KOTS_EXP_DIVIDE;
 	case 6:
-		return 32000;
+		return 32000 / KOTS_EXP_DIVIDE;
 	case 7:
-		return 60000;
+		return 60000 / KOTS_EXP_DIVIDE;
 	case 8:
-		return 100000;
+		return 100000 / KOTS_EXP_DIVIDE;
 	case 9:
-		return 150000;
+		return 150000 / KOTS_EXP_DIVIDE;
 	case 10:
-		return 200000;
+		return 200000 / KOTS_EXP_DIVIDE;
 	case 11:
-		return 275000;
+		return 275000 / KOTS_EXP_DIVIDE;
 	case 12:
-		return 350000;
+		return 350000 / KOTS_EXP_DIVIDE;
 	case 13:
-		return 425000;
+		return 425000 / KOTS_EXP_DIVIDE;
 	case 14:
-		return 500000;
+		return 500000 / KOTS_EXP_DIVIDE;
 	default:
-		return 100000 * (level - 9);
+		return 100000 * (level - 9) / KOTS_EXP_DIVIDE;
 	}
 }
 
@@ -893,9 +894,7 @@ void Kots_CharacterCheckArmor(edict_t *ent, int *save, int *armor)
 {
 	int total_armor = *armor;
 
-	if (ent->character->cur_technical >= 7)
-		total_armor = Kots_RandMultiply(total_armor, TECH_RESIST_SUPER);
-	else if (ent->character->cur_technical >= 5)
+	if (ent->character->cur_technical >= 5)
 		total_armor = Kots_RandMultiply(total_armor, TECH_RESIST_HIGH);
 	else if (ent->character->cur_technical >= 3)
 		total_armor = Kots_RandMultiply(total_armor, TECH_RESIST_NORMAL);
@@ -905,9 +904,7 @@ void Kots_CharacterCheckArmor(edict_t *ent, int *save, int *armor)
 	{
 		int take = *save;
 
-		if (ent->character->cur_technical >= 7)
-			take = Kots_Round(take / TECH_RESIST_SUPER);
-		else if (ent->character->cur_technical >= 3)
+		if (ent->character->cur_technical >= 5)
 			take = Kots_Round(take / TECH_RESIST_HIGH);
 		else if (ent->character->cur_technical >= 3)
 			take = Kots_Round(take / TECH_RESIST_NORMAL);
@@ -2463,7 +2460,7 @@ int Kots_CharacterGetPurchasedPlayerPoints(edict_t *ent)
 
 int Kots_CharacterGetNextPlayerPointCost(edict_t *ent)
 {
-	return 8000 + Kots_CharacterGetPurchasedPlayerPoints(ent) * 1000;
+	return (8000 + Kots_CharacterGetPurchasedPlayerPoints(ent) * 1000) / KOTS_CREDIT_DIVIDE;
 }
 
 int Kots_CharacterGetTotalWeaponPoints(edict_t *ent)
@@ -2483,7 +2480,7 @@ int Kots_CharacterGetPurchasedWeaponPoints(edict_t *ent)
 
 int Kots_CharacterGetNextWeaponPointCost(edict_t *ent)
 {
-	return 4000 + Kots_CharacterGetPurchasedWeaponPoints(ent) * 500;
+	return (4000 + Kots_CharacterGetPurchasedWeaponPoints(ent) * 500) / KOTS_CREDIT_DIVIDE;
 }
 
 int Kots_CharacterGetTotalPowerPoints(edict_t *ent)
@@ -2500,7 +2497,7 @@ int Kots_CharacterGetPurchasedPowerPoints(edict_t *ent)
 
 int Kots_CharacterGetNextPowerPointCost(edict_t *ent)
 {
-	return 12000 + Kots_CharacterGetPurchasedPowerPoints(ent) * 1500;
+	return (12000 + Kots_CharacterGetPurchasedPowerPoints(ent) * 1500) / KOTS_CREDIT_DIVIDE;
 }
 
 int Kots_CharacterGetSpawnCost(int spawns)

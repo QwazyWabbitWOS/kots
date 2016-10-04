@@ -84,7 +84,11 @@ typedef enum {
 #define KOTS_EXP_2FER_MIN			20
 #define KOTS_EXP_3FER_MIN			40
 
-#define KOTS_ENABLE_MAX_WEAPON_SKILL	1
+//define experience REDUCTION constants
+#define KOTS_EXP_DIVIDE				10
+#define KOTS_CREDIT_DIVIDE			10			
+
+#define KOTS_ENABLE_MAX_WEAPON_SKILL	0
 
 // define fly constants
 #define KOTS_FLY_MAX_CHARGE			3.0
@@ -151,9 +155,9 @@ typedef enum {
 #define WIS_MASTERY		(WIS_LEVEL_BONUS * 1.5)
 
 //define technical armor resistance
-#define TECH_RESIST_NORMAL	1.4
-#define TECH_RESIST_HIGH	1.75
-#define TECH_RESIST_SUPER	2.25
+#define TECH_RESIST_NORMAL	1.5		// former 1.4
+#define TECH_RESIST_HIGH	2		// former 1.75
+#define TECH_RESIST_SUPER	2.25	// former 2.25
 
 //define antiweapon enhancements
 #define ANTIWEAPON_BONUS		30
