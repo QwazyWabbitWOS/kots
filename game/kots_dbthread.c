@@ -696,10 +696,10 @@ void Kots_DebugDbInfo(edict_t *ent)
 
 MYSQL *ConnectToDb(MYSQL *mysql)
 {
-	char host_name[129];
-	char database_name[65];
-	char username[65];
-	char pass[65];
+	char host_name[129] = { 0 };
+	char database_name[65] = { 0 };
+	char username[65] = { 0 };
+	char pass[65] = { 0 };
 	int i;
 
 	//lock the dbuser info while until we create local copies of it
