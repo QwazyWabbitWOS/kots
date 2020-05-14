@@ -18,18 +18,30 @@ ARCH := $(shell uname -m | sed -e s/i.86/i386/ -e s/sun4u/sparc64/ -e s/arm.*/ar
 
 CC = gcc
 
-# on x64 machines do this preparation:
+# Required packages for 32-bit builds:
+# On x64 machines do this preparation:
 # sudo apt-get install ia32-libs
 # sudo apt-get install libc6-dev-i386
 # On Ubuntu 16.x use sudo apt install libc6-dev-i386
 # this will let you build 32-bits on ia64 systems
-#
-INCPATH= -I ../mysql/include -I ../curl/include
+
+
+# This list is preliminary.
+# This list is for Debian, other systems vary.
+# REQUIRED packages needed to build this project:
+# sudo apt install libevent-pthreads
+# sudo apt install libcurl4-gnutls-dev
+# sudo apt install libmysqlcppconn-dev
+# sudo apt install default-libmysqlclient-dev
+
+INCPATH= -I/usr/include -I/usr/include/mysql
+LIBINC = -Lpthreads -lm -lmysqlclient -lcurl
+
 # This is for native build
 CFLAGS=-O3 -DARCH="$(ARCH)" $(INCPATH)
 # This is for 32-bit build on 64-bit host
 ifeq ($(ARCH),i386)
-CFLAGS =-m32 -O3 -fPIC -DARCH="$(ARCH)" -DSTDC_HEADERS -I/usr/include $(INCPATH)
+CFLAGS =-m32 -O3 -fPIC -DARCH="$(ARCH)" -DSTDC_HEADERS $(INCPATH)
 endif
 
 # use this when debugging
@@ -48,8 +60,6 @@ endif
 SHLIBEXT=so
 #set position independent code
 SHLIBCFLAGS=-fPIC 
-
-LIBINC =-L../mysql/lib/opt -L../curl/lib -L../pthreads -lm -lmysqlclient -lcurl
 
 ORIGDIR=Source
 
