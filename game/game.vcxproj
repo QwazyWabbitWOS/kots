@@ -33,34 +33,42 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9493CD5E-453B-4C35-B6E5-07E5DAF50874}</ProjectGuid>
     <RootNamespace>game</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Static Linking|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Official|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Alpha|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Alpha|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Official|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -161,8 +169,8 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../pthreads/;../mysql/include;../curl/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../mysql/include;../curl/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;HAVE_STRUCT_TIMESPEC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
@@ -196,6 +204,7 @@
       <BaseAddress>0x20000000</BaseAddress>
       <ImportLibrary>.\..\debug/gamex86.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <PostBuildEvent>
       <Command>if not "%Q2DIR%" == "" (
@@ -816,7 +825,6 @@ echo Environment variable Q2DIR not set...
     <ClCompile Include="kots_motd.c" />
     <ClCompile Include="kots_mute.c" />
     <ClCompile Include="kots_mysql_helper.c" />
-    <ClCompile Include="kots_official.c" />
     <ClCompile Include="kots_pickups.c" />
     <ClCompile Include="kots_player.c" />
     <ClCompile Include="kots_power.c" />
@@ -1366,7 +1374,6 @@ echo Environment variable Q2DIR not set...
     <ClInclude Include="kots_motd.h" />
     <ClInclude Include="kots_mute.h" />
     <ClInclude Include="kots_mysql_helper.h" />
-    <ClInclude Include="kots_official.h" />
     <ClInclude Include="kots_pickups.h" />
     <ClInclude Include="kots_player.h" />
     <ClInclude Include="kots_power.h" />
@@ -1407,12 +1414,15 @@ echo Environment variable Q2DIR not set...
     <ClInclude Include="q_shared.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\enable_update_kings.sql" />
+    <None Include="build_kots" />
     <None Include="game.def" />
     <None Include="AdminLogin.sql" />
     <None Include="BanIp.sql" />
     <None Include="CreateCharacter.sql" />
     <None Include="DeleteAllCharacters.sql" />
     <None Include="DeleteCharacter.sql" />
+    <None Include="GNUmakefile" />
     <None Include="Load.sql" />
     <None Include="LoadIpBans.sql" />
     <None Include="LoadMuteList.sql" />
@@ -1433,7 +1443,6 @@ echo Environment variable Q2DIR not set...
     <None Include="UpdateServer.sql" />
     <None Include="v_possible_kings.sql" />
     <None Include="..\changelog.txt" />
-    <None Include="..\TODO.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\curl\lib\curllib.vcxproj">

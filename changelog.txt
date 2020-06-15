@@ -1,3 +1,13 @@
+Version 1.1.1 - 2020-05-15 - QwazyWabbit
+BUFIX: Line 43 of kots_db.sql, missing comma.
+CHANGE: Modify FOFS and family for portability to 64-bits.
+CHANGE: Initialize stack variables in ConnectToDB function.
+CHANGE: include stdlib.h and string.h in kots_mysql_helper.h
+CHANGE: Readability, put DF_ flags in numerical order.
+CHANGE: Add enable_update_kings.sql per Kold.
+CHANGE: Add GNUmakefile for Linux builds. 
+        Game can now be built using Linux packaged libs.
+
 Version 1.1.0 - 2010-08-15 - SWB
 BUGFIX: Fixed a bug where the wrong text printed out for sv dbhostname.
 BUGFIX: Fixed a bug with the wrong dbhostname variable being used.

@@ -7,7 +7,7 @@
 #define DEG2RAD( a ) ( a * M_PI ) / 180.0F
 #endif
 
-#define KOTS_VERSION				"KOTS2007 1.1.0"
+#define KOTS_VERSION				"KOTS2007 1.1.1"
 
 #ifndef HEALTH_IGNORE_MAX
 #define HEALTH_IGNORE_MAX	1

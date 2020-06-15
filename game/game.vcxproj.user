@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommand>$(Q2DIR)\r1q2.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommand>$(Q2DIR)\dedicated.exe</LocalDebuggerCommand>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>+set game kots2007dev +set deathmatch 1 +set public 0 +map q2dm1</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>+set game kots2007dev +set deathmatch 1 +exec server.cfg</LocalDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LocalDebuggerWorkingDirectory>$(Q2DIR)</LocalDebuggerWorkingDirectory>
@@ -31,7 +31,7 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LocalDebuggerCommand>$(Q2DIR)\r1q2.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommand>$(Q2DIR)\r1q2ded.exe</LocalDebuggerCommand>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LocalDebuggerCommandArguments>+set game kots2007dev +set deathmatch 1 +set public 0 +map q2dm1</LocalDebuggerCommandArguments>
